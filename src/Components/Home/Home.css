@@ -1,0 +1,27 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.d-flex.flex-row-reverse {
+    background: #8968e2;
+    color: white;
+}
+.scrollup{
+    position: fixed;
+    display: none;
+    bottom: 50px;
+    right: 20px;
+    height: 38px;
+    width: 38px;
+    background:  url(https://res.cloudinary.com/romagny13/image/upload/v1452781434/top_oxooup.png) no-repeat 0 0;
+    z-index: 10000;
+ }
+ 
+ /* variable utile pour le Debug */
+  .var1{
+    position: fixed;
+    color:red;
+    top: 50px;
+    left: 50px;
+  }

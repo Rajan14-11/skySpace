@@ -1,0 +1,28 @@
+.about {
+    background: #dddddd1a;
+}
+.aboutImg img {
+    height: 400px;
+    max-width: 100%;
+}
+.aboutText{
+    /* width: 80%; */
+}
+
+.animation {
+    animation: about 2s infinite;
+}
+
+@keyframes about {
+    0% {
+         transform: translateY(-3px);
+    }
+
+    50% {
+         transform: translateY(3px);
+    }
+
+    100% {
+         transform: translateY(-3px);
+    }
+}

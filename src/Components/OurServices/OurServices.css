@@ -1,0 +1,22 @@
+
+.rightBtn, .leftBtn {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    color: rgb(30, 28, 28);
+    background: #F6F6F6;
+    width: 50px;
+    height: 50px;
+    color: #41464b;
+    margin: 5px;
+}
+.rightBtn:hover{
+    background: #c4c1c1;
+}
+.leftBtn:hover{
+    background: #c4c1c1;
+}
+.buttonRightLeft.d-flex.justify-content-end div.nextIcon {
+    margin-right: 50px;
+    
+}
