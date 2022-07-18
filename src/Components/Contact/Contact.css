@@ -1,0 +1,27 @@
+
+.mainContactForm {
+  background: #A7B6F5;
+  padding: 25px;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+.submitBtn{
+  width: fit-content;
+  margin:0 auto
+}
+
+/* responsive */
+@media screen and (max-width: 767px) {
+  .textArea{ 
+   height: 140% !important;
+  }
+  .submitBtn{
+    margin-top: 70px!important;
+  }
+ }
+ @media screen and (min-width: 768px) {
+  .textArea{ 
+   margin-left: 30px !important;
+  }
+ }
