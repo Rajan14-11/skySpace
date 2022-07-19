@@ -1,0 +1,7 @@
+
+.pt-5.secondBanner {
+    background: linear-gradient(to bottom right, #7f5be4, #4ed2db);
+    /* background: linear-gradient(to bottom right, #7f5be4, #59171130); */
+    height:fit-content;
+    
+}
