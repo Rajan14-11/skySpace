@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import CurrencyFormat from 'react-currency-format'
-import { Link, NavLink } from 'react-router-dom'
-import NewHeader from '../../Shared/Header/NewHeader'
-import "./Cart.css"
-import "./products.json"
+import React, { useEffect, useState } from "react";
+import CurrencyFormat from "react-currency-format";
+import { Link, NavLink } from "react-router-dom";
+import NewHeader from "../../Shared/Header/NewHeader";
+import "./Cart.css";
+import "./products.json";
 function Cart() {
-
-  const [showcart, setShowCart] = useState("true")
-  const [allproducts, setAllproducts] = useState([])
+  const [showcart, setShowCart] = useState("true");
+  const [allproducts, setAllproducts] = useState([]);
 
   useEffect(() => {
-
-
     const getproducts = async () => {
       try {
         let result = await fetch(
@@ -19,61 +16,60 @@ function Cart() {
         );
         let data = await result.json();
 
-        setAllproducts(data)
+        setAllproducts(data);
       } catch (error) {
         console.log(error);
       }
-    }
-    return () => {
-      getproducts()
-    }
-  }, [])
-
-  const getTotal=()=>{
-    return(
-    allproducts?.reduce((amount,item)=>parseFloat( item.mobilePrice1*item.quantity)+amount,0)
-    )
-  }
-
-  const removeItem = (id)=>{
-      let newcart = [...allproducts];
-      const index = allproducts.findIndex((item) =>item._id===id)
-      if (index >= 0) {
-        newcart.splice(index, 1);
-      } else {
-        console.log('err')
-      }
-      setAllproducts(newcart);
     };
+    return () => {
+      getproducts();
+    };
+  }, []);
 
-    const increaseProductCount=(id)=>{
-      // const index = allproducts.findIndex((item) => item._id === id);
-      let updatedCart = allproducts.map((item)=>{
-        if(item._id===id){
-          return{...item,quantity:parseInt(item.quantity) + parseInt(1)}
-        }
-        return item
-      })
-      // console.log(updatedCart)
-      setAllproducts(updatedCart)
+  const getTotal = () => {
+    return allproducts?.reduce(
+      (amount, item) => parseFloat(item.mobilePrice1 * item.quantity) + amount,
+      0
+    );
+  };
 
+  const removeItem = (id) => {
+    let newcart = [...allproducts];
+    const index = allproducts.findIndex((item) => item._id === id);
+    if (index >= 0) {
+      newcart.splice(index, 1);
+    } else {
+      console.log("err");
     }
-    const decreaseProductCount=(id)=>{
-      // const index = allproducts.findIndex((item) => item._id === id);
-      let updatedCart = allproducts.map((item)=>{
-        if(item._id===id){
-          return{...item,quantity:parseInt(item.quantity) - parseInt(1)}
-        }
-          return item
-        })
-        setAllproducts(updatedCart)
+    setAllproducts(newcart);
+  };
 
-    }
+  const increaseProductCount = (id) => {
+    // const index = allproducts.findIndex((item) => item._id === id);
+    let updatedCart = allproducts.map((item) => {
+      if (item._id === id) {
+        return { ...item, quantity: parseInt(item.quantity) + parseInt(1) };
+      }
+      return item;
+    });
+    // console.log(updatedCart)
+    setAllproducts(updatedCart);
+  };
+  const decreaseProductCount = (id) => {
+    // const index = allproducts.findIndex((item) => item._id === id);
+    let updatedCart = allproducts.map((item) => {
+      if (item._id === id) {
+        return { ...item, quantity: parseInt(item.quantity) - parseInt(1) };
+      }
+      return item;
+    });
+    setAllproducts(updatedCart);
+  };
 
-    const clearCart = ()=>{
-      setAllproducts([])
-      // setTotal(0)
-    }
+  const clearCart = () => {
+    setAllproducts([]);
+    // setTotal(0)
+  };
 
   return (
     <>
@@ -104,7 +100,9 @@ function Cart() {
                     </Link>
                     <div>
                       <h4>{singleproduct.mobileTitle}</h4>
-                      <h5>{singleproduct.mobilePrice1*singleproduct.quantity}</h5>
+                      <h5>
+                        {singleproduct.mobilePrice1 * singleproduct.quantity}
+                      </h5>
                       <span
                         className="remove-item"
                         onClick={() => removeItem(singleproduct._id)}
@@ -118,10 +116,17 @@ function Cart() {
                         onClick={() => increaseProductCount(singleproduct._id)}
                       ></i>
                       <p className="item-amount">{singleproduct.quantity}</p>
-                      <i
-                        className="fas fa-chevron-down "
-                        onClick={() => decreaseProductCount(singleproduct._id)}
-                      ></i>
+                      <button
+                        disabled={singleproduct.quantity <= 1 ? true : false}
+                        style={{background:"transparent" , border:'none'}}
+                      >
+                        <i
+                          className="fas fa-chevron-down "
+                          onClick={singleproduct.quantity>1?() =>
+                            decreaseProductCount(singleproduct._id):("")
+                          }
+                        ></i>
+                      </button>
                     </div>
                   </div>
                 );
@@ -150,7 +155,7 @@ function Cart() {
             >
               clear cart
             </button>
-            <NavLink to={'/checkout'}>
+            <NavLink to={"/checkout"}>
               <button className="clear-cart banner-btn">CheckOut</button>
             </NavLink>
           </div>
@@ -160,4 +165,4 @@ function Cart() {
   );
 }
 
-export default Cart
+export default Cart;
