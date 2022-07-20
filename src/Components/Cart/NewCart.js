@@ -104,7 +104,8 @@ function NewCart() {
         </Link>
         <Offcanvas.Body>
           <Stack gap={3}>
-            {allproducts ?
+            {quantity!==0 ?
+
               allproducts.map((singleproduct) => {
                 return (
                   <div className="cart-item" key={singleproduct._id}>
@@ -157,15 +158,16 @@ function NewCart() {
                       </div>
                     </div>
                   </div>
-                );
+                )
               })
             :
             (<div className='empty-cart'>
              <img src='/imgs/download.png'/>
              <h4>Your Cart is empty </h4>
-            </div>)
+            </div>
+            )
             }
-          {allproducts ?
+          {quantity !==0 ?
             <div className="cart-footer">
               <button
                 className="clear-cart banner-btn"
