@@ -13,6 +13,7 @@ import AddToCart from "./Components/AddToCart/AddToCart";
 import NewHeader from "./Shared/Header/NewHeader";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
+import NewCart from "./Components/Cart/NewCart";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
 
       <Route path="addtocart/:id" element={<AddToCart/>}/>
       <Route path="newheader" element={<NewHeader/>}/>
-      <Route path="cart" element={<Cart/>}/>
+      <Route path="cart" element={<NewCart/>}/>
       <Route path="checkout" element={<Checkout/>}/>
       </Routes>
 

@@ -96,7 +96,7 @@ const logOut = () => {
                         }}
                       />
 
-                    <div className="cart-items">{props.productsInCart}</div>
+                    <div className="cart-items">{props.quantity}</div>
                     <span className="text nav-text">Cart</span>
                   </a>
                 </li>
