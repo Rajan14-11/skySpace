@@ -135,7 +135,7 @@ function NewCart() {
                             onClick={
                               singleproduct.quantity > 1
                                 ? () => decreaseProductCount(singleproduct._id)
-                                : ""
+                                : ()=> removeItem(singleproduct._id)
                             }
                           />
                         </div>:

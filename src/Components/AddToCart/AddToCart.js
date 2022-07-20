@@ -46,7 +46,7 @@ function AddToCart() {
 
   return (
     <>
-      <NewHeader />
+      {/* <NewHeader /> */}
       <div className="container">
         <div className="home-line">
           <a className="heading" href="/">
