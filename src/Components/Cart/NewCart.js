@@ -3,11 +3,7 @@ import { Offcanvas ,Stack} from 'react-bootstrap'
 import CurrencyFormat from 'react-currency-format';
 import { Link, NavLink } from 'react-router-dom';
 import NewHeader from '../../Shared/Header/NewHeader';
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import CloseIcon from "@mui/icons-material/Close";
-import AddToCart from '../AddToCart/AddToCart';
-import Home from '../Home/Home';
+
 
 function NewCart() {
 
@@ -116,50 +112,63 @@ function NewCart() {
                       </Link>
                       <div className="product-detail">
                         <h4>{singleproduct.mobileTitle}</h4>
-                        <h6>{singleproduct.mobileRam1}/{singleproduct.mobileRam2}</h6>
+                        <h6>
+                          {singleproduct.mobileRam1}/{singleproduct.mobileRam2}
+                        </h6>
 
-                        {singleproduct.quantity > 0?
-                        <div className="quantity">
-                          <AddCircleOutlineIcon
-                            onClick={() =>
-                              increaseProductCount(singleproduct._id)
-                            }
-                          />
-                          <p className="item-amount">
-                            {singleproduct.quantity}
-                          </p>
-                          <RemoveCircleOutlineIcon
-                            style={{
-                              background: "transparent",
-                              border: "none",
-                            }}
-                            onClick={
-                              singleproduct.quantity > 1
-                                ? () => decreaseProductCount(singleproduct._id)
-                                : ()=> removeItem(singleproduct._id)
-                            }
-                          />
-                        </div>:
-                        <div>
-                              <h4 style={{color:"red"}}>Out of Stock</h4>
-                        </div>}
+                        {singleproduct.quantity > 0 ? (
+                          <div className="quantity">
+                            <i
+                              class="fa fa-light fa-circle-plus"
+                              onClick={() =>
+                                increaseProductCount(singleproduct._id)
+                              }
+                            ></i>
+
+                            <p className="item-amount">
+                              {singleproduct.quantity}
+                            </p>
+
+                            <i
+                              style={{
+                                background: "transparent",
+                                border: "none",
+                              }}
+                              class=" fa fa-light fa-circle-minus"
+                              onClick={
+                                singleproduct.quantity > 1
+                                  ? () =>
+                                      decreaseProductCount(singleproduct._id)
+                                  : () => removeItem(singleproduct._id)
+                              }
+                            ></i>
+                          </div>
+                        ) : (
+                          <div>
+                            <h4 style={{ color: "red" }}>Out of Stock</h4>
+                          </div>
+                        )}
                       </div>
                       <div className="right-part-cart">
-                        <CloseIcon
-                          className="remove-item"
+                        <i
+                          class="fa fa-light fa-xmark remove-item"
                           onClick={() => removeItem(singleproduct._id)}
-                        />
-                        {singleproduct.quantity > 0 ?
+                        ></i>
 
-                        <h5>
-                          <span>$</span>
-                          {singleproduct.mobilePrice1 * singleproduct.quantity}
-                        </h5>
-                        :" "}
+
+                        {singleproduct.quantity > 0 ? (
+                          <h5>
+                            <span>$</span>
+                            {singleproduct.mobilePrice1 *
+                              singleproduct.quantity}
+                          </h5>
+                        ) : (
+                          " "
+                        )}
                       </div>
                     </div>
                   </div>
-                )
+                );
               })
             :
             (<div className='empty-cart'>
