@@ -6,7 +6,8 @@ import NewHeader from '../../Shared/Header/NewHeader';
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import CloseIcon from "@mui/icons-material/Close";
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import AddToCart from '../AddToCart/AddToCart';
+import Home from '../Home/Home';
 
 function NewCart() {
 

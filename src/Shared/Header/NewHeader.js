@@ -101,12 +101,12 @@ const logOut = () => {
                   </a>
                 </li>
               </NavLink>
-              <div
+              {/* <div
                 className="cart-btn nav-link"
                 onClick={() => {
                   setShowCart(!showcart);
                 }}
-              ></div>
+              ></div> */}
 
               <li className="nav-link">
                 <a href="#">

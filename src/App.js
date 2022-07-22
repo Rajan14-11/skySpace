@@ -14,6 +14,8 @@ import NewHeader from "./Shared/Header/NewHeader";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
 import NewCart from "./Components/Cart/NewCart";
+import Filter from "./Components/Filter/Filter";
+import OrderComplete from "./Components/OrderComplete/OrderComplete";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
       <Route path="newheader" element={<NewHeader/>}/>
       <Route path="cart" element={<NewCart/>}/>
       <Route path="checkout" element={<Checkout/>}/>
+      <Route path="filter" element={<Filter/>}/>
+      <Route path="ordercomplete" element={<OrderComplete/>}/>
       </Routes>
 
       </AuthProvider>
