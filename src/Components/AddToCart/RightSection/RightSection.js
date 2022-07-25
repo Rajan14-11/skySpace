@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom'
 import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
-import './RightSection.css'
+// import './RightSection.css'
 function RightSection(props) {
 
   const [changeValue, setChangeValue] = useState(1)
@@ -13,7 +13,7 @@ function RightSection(props) {
   const Cart = ()=>{
 
    navigate("/cart",{replace:true})
-   
+
   }
 
   const increment = ()=>{

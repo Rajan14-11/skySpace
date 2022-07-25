@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-// import './LeftSection.css'
+import React, { useState } from "react";
+import "./LeftSide.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
 function LeftSection(props) {
-//  console.log(props)
+  //  console.log(props)
   const [image, setImage] = useState(props.mobilePic4);
   return (
     <>
@@ -37,4 +37,4 @@ function LeftSection(props) {
   );
 }
 
-export default LeftSection
+export default LeftSection;

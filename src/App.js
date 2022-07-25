@@ -16,6 +16,7 @@ import Checkout from "./Components/Checkout/Checkout";
 import NewCart from "./Components/Cart/NewCart";
 import Filter from "./Components/Filter/Filter";
 import OrderComplete from "./Components/OrderComplete/OrderComplete";
+import ProductDetails from "./Components/ProductDetails/ProductDetail";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
       <Route path="checkout" element={<Checkout/>}/>
       <Route path="filter" element={<Filter/>}/>
       <Route path="ordercomplete" element={<OrderComplete/>}/>
+      <Route path="productdetail/:id" element={<ProductDetails/>}/>
       </Routes>
 
       </AuthProvider>
