@@ -44,6 +44,7 @@ function ProductDetails() {
 
   return (
     <>
+    <Header/>
       <div className="product_container">
         <div className="product_content">
           <div className="home-line">
@@ -68,7 +69,7 @@ function ProductDetails() {
             <RightSection
               title={productDetails && productDetails.mobileName}
               price={productDetails && productDetails.mobilePrice1}
-            //   productdetails={productDetails&&productDetails}
+              productdetails={productDetails&&productDetails}
             />
           </div>
 

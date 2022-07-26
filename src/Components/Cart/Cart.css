@@ -60,7 +60,6 @@
   margin: 1.5rem 0;
   border-bottom: 1px solid black;
   border-spacing: 10px;
-  height: 25vh;
 }
 .cart-item img {
   width: 75px;
@@ -90,7 +89,7 @@
 /*---------- End of Cart Item -------------------- */
 
 .cart-footer {
-  letter-spacing: 1.5%;
+  /* letter-spacing: 1.5%; */
   text-align: center;
 }
 .cart-footer h3 {

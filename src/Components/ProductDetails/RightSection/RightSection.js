@@ -5,12 +5,13 @@ function RightSection(props) {
   const [changeValue, setChangeValue] = useState(1)
   const [counterValue, setCounterValue] = useState(1)
   const [totalPrice,setTotalPrice] = useState(props.price)
-
  let navigate = useNavigate()
-
-  const Cart = ()=>{
-
-   navigate("/cart",{replace:true})
+ const Cart = ()=>{
+    //  localStorage.setItem("Title",props.title)
+    //  localStorage.setItem("Price",props.price)
+    //  localStorage.setItem("quantity",counterValue)
+    localStorage.setItem("ProductDetails",JSON.stringify(props.productdetails))
+    navigate("/cart",{replace:true})
 
   }
 
