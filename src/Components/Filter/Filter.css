@@ -1,122 +1,150 @@
-.filter_conatiner{
-    width: 20%;
-    height: 100vh;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
+.filter_conatiner {
+  width: 20%;
+  height: 100vh;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: block;
 }
 
-.inner_content{
-    margin: 5px 15px;
+.inner_content {
+  margin: 5px 15px;
 }
 
-.filter_heading{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    margin-top: 10px;
-    font-weight: 600;
-    text-transform: capitalize;
-    font-size: 22px;
+.filter_heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 22px;
 }
 
-.heading {
-    margin-top: 10px;
-    font-weight: 600;
-    text-transform: capitalize;
-    font-size: 20px;
+.filter_heading_title {
+  margin-top: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 20px;
 }
 
-.hr{
-    width: 100%;
-    color: black;
+.hr {
+  width: 100%;
+  color: black;
 }
 
-.categories{
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-justify-content: center;
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
-.categories_title h3{
-    text-transform: capitalize;
-    font-size: 20px;
-    font-weight: 500;
-}
-
-
-.slider{
-      display: block;
-      width: fit-content;
-      margin-right: 15px;
+.categories_title h3 {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 500;
 }
 
-.price_range{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.price{
+  width: 100%;
+}
+.slider {
+  display: block;
+  /* width: fit-content; */
+  margin-right: 15px;
 }
 
-.price_range input{
-    width: 40%;
-    margin: auto;
-    padding: 5px;
+.price_range {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.price_range span{
-    margin: 0 5px;
-    font-weight: 600;
+.price_range input {
+  width: 40%;
+  margin: auto;
+  padding: 5px;
 }
 
-.brands{
-    margin-right: 10px;
+.price_range span {
+  margin: 0 5px;
+  font-weight: 600;
 }
 
-.customer_ratings{
-    margin-right: 10px;
+.brand span {
+  font-size: 16px;
 }
 
-.brand span{
-    font-size: 16px;
+.close-button {
+  display: none;
 }
 
-.close-button{
+@media (max-width: 768px) {
+  .filter_conatiner {
+    width: 50%;
     display: none;
+  }
+  .inner_content {
+    margin-left: 10px;
+  }
+
+  .price_range input {
+    padding: 0;
+    height: 20px;
+    width: 35%;
+    text-align: center;
+  }
+
+  .heading {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .brand span {
+    font-size: 15px;
+  }
+
+  .close-button {
+    display: block;
+  }
+
+  .show{
+    display: block;
+  }
 }
 
-@media (max-width:768px){
-    .filter_conatiner{
-        width: 50%;
+@media (max-width: 450px) {
+    .filter_conatiner {
+        width: 100%;
+        display: none;
     }
-    .inner_content{
-        margin-left:10px;
-    }
-
-    .price_range input{
-        padding: 0;
-        height: 20px;
-        width: 35%;
-        text-align: center;
-    }
-
-    .heading{
-        font-size: 18px;
-        font-weight: 500;
-    }
-
-    .brand span{
-        font-size: 15px;
-    }
-
-    .close-button{
-        display: block;
+    .show{
+      display: block;
     }
 }
 
-@media(max-width:450px){
-   .filter_conatiner{ width: 100%;}
+.accordion-button:focus {
+  box-shadow: none !important;
+  border-bottom: 1px solid rgb(189, 188, 188);
+  background-color: none !important;
+  color: black;
+}
+
+.accordion-button {
+  border-bottom: 1px solid rgb(189, 188, 188);
+  border-radius: 0 !important;
+  padding-bottom: 0!important;
+  padding-top: 20px !important;
+  transition: 2s !important;
+}
+
+.accordion_heading{
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 20px;
+  border-bottom: 2px solid black;
 }

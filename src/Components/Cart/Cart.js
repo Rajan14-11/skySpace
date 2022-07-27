@@ -1,168 +1,168 @@
-import React, { useEffect, useState } from "react";
-import CurrencyFormat from "react-currency-format";
-import { Link, NavLink } from "react-router-dom";
-import NewHeader from "../../Shared/Header/NewHeader";
+import React, { Fragment, useEffect, useState } from "react";
 import "./Cart.css";
-import "./products.json";
-function Cart() {
-  const [showcart, setShowCart] = useState("true");
-  const [allproducts, setAllproducts] = useState([]);
+// import CartItemCard from "./CartItemCard";
+import { useSelector, useDispatch } from "react-redux";
+// import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
+// import { Typography } from "@material-ui/core";
+// import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import { Link, useNavigate } from "react-router-dom";
+import Header from "../../Shared/Header/Header";
+import CheckoutSteps from "../Checkout/CheckoutSteps";
 
-  useEffect(() => {
-    const getproducts = async () => {
-      try {
-        let result = await fetch(
-          "https://theskyaural.herokuapp.com/mobileDetailsPost"
-        );
-        let data = await result.json();
+const Cart = () => {
 
-        setAllproducts(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    return () => {
-      getproducts();
-    };
-  }, []);
+  const navigate = useNavigate()
+   const [allproducts, setAllproducts] = useState([]);
 
-  const getTotal = () => {
-    return allproducts?.reduce(
-      (amount, item) => parseFloat(item.mobilePrice1 * item.quantity) + amount,
-      0
-    );
-  };
+   let quantity = 0;
 
-  const removeItem = (id) => {
-    let newcart = [...allproducts];
-    const index = allproducts.findIndex((item) => item._id === id);
-    if (index >= 0) {
-      newcart.splice(index, 1);
-    } else {
-      console.log("err");
-    }
-    setAllproducts(newcart);
-  };
+   {
+     allproducts &&
+       allproducts.map((item) => {
+         return (quantity += parseInt(item.quantity));
+       });
+   }
 
-  const increaseProductCount = (id) => {
-    // const index = allproducts.findIndex((item) => item._id === id);
-    let updatedCart = allproducts.map((item) => {
-      if (item._id === id) {
-        return { ...item, quantity: parseInt(item.quantity) + parseInt(1) };
-      }
-      return item;
-    });
-    // console.log(updatedCart)
-    setAllproducts(updatedCart);
-  };
-  const decreaseProductCount = (id) => {
-    // const index = allproducts.findIndex((item) => item._id === id);
-    let updatedCart = allproducts.map((item) => {
-      if (item._id === id) {
-        return { ...item, quantity: parseInt(item.quantity) - parseInt(1) };
-      }
-      return item;
-    });
-    setAllproducts(updatedCart);
-  };
+   useEffect(() => {
+     const getproducts = async () => {
+       try {
+         let result = await fetch(
+           "https://theskyaural.herokuapp.com/mobileDetailsPost"
+         );
+         let data = await result.json();
 
-  const clearCart = () => {
-    setAllproducts([]);
-    // setTotal(0)
+         setAllproducts(data);
+       } catch (error) {
+         console.log(error);
+       }
+     };
+     return () => {
+       getproducts();
+     };
+   }, []);
+
+   const getTotal = () => {
+     return allproducts?.reduce(
+       (amount, item) => parseFloat(item.mobilePrice1 * item.quantity) + amount,
+       0
+     );
+   };
+
+   const removeItem = (id) => {
+     let newcart = [...allproducts];
+     const index = allproducts.findIndex((item) => item._id === id);
+     if (index >= 0) {
+       newcart.splice(index, 1);
+     } else {
+       console.log("err");
+     }
+     setAllproducts(newcart);
+   };
+
+   const increaseProductCount = (id) => {
+     // const index = allproducts.findIndex((item) => item._id === id);
+     let updatedCart = allproducts.map((item) => {
+       if (item._id === id) {
+         return { ...item, quantity: parseInt(item.quantity) + parseInt(1) };
+       }
+       return item;
+     });
+     // console.log(updatedCart)
+     setAllproducts(updatedCart);
+   };
+   const decreaseProductCount = (id) => {
+     // const index = allproducts.findIndex((item) => item._id === id);
+     let updatedCart = allproducts.map((item) => {
+       if (item._id === id) {
+         return { ...item, quantity: parseInt(item.quantity) - parseInt(1) };
+       }
+       return item;
+     });
+     setAllproducts(updatedCart);
+   };
+
+   const checkoutHandler = () => {
+navigate('/checkout')
   };
 
   return (
-    <>
-      <NewHeader productsInCart={allproducts && allproducts.length} />
-      {/* <!-- cart --> */}
-      <div className={`cart-overlay ${showcart ? "transparentBcg" : ""}`}>
-        <div className={`cart ${showcart ? "showCart" : ""}`}>
-          <Link to={"/"}>
-            <span className="close-cart">
-              <i
-                className="fas fa-window-close"
-                onClick={() => {
-                  setShowCart(!showcart);
-                }}
-              >
-                {" "}
-              </i>
-            </span>
-          </Link>
-          <h2>your cart</h2>
-          <div className="cart-content">
+    <div className="detailcart_body">
+      <Header />
+      <div className="detailcart_stepper">
+        <CheckoutSteps activeStep={0} />
+      </div>
+      {allproducts.length === 0 ? (
+        <div className="emptyCart">
+          {/* <RemoveShoppingCartIcon /> */}
+          <p>No Product in Your Cart</p>
+          <Link to="/products">View Products</Link>
+        </div>
+      ) : (
+        <Fragment>
+          <div className="cartPage">
+            <div className="cartHeader">
+              <p>Product</p>
+              <p>Quantity & Subtotal</p>
+              {/* <p>Subtotal</p> */}
+            </div>
+
             {allproducts &&
-              allproducts.map((singleproduct) => {
-                return (
-                  <div className="cart-item" key={singleproduct._id}>
-                    <Link to={`/addtocart/:${singleproduct._id}`}>
-                      <img src={singleproduct.mobileImg1Link} alt="" />
-                    </Link>
-                    <div>
-                      <h4>{singleproduct.mobileTitle}</h4>
-                      <h5>
-                        {singleproduct.mobilePrice1 * singleproduct.quantity}
-                      </h5>
-                      <span
-                        className="remove-item"
-                        onClick={() => removeItem(singleproduct._id)}
-                      >
-                        remove
-                      </span>
-                    </div>
-                    <div>
-                      <i
-                        className="fas fa-chevron-up"
-                        onClick={() => increaseProductCount(singleproduct._id)}
-                      ></i>
-                      <p className="item-amount">{singleproduct.quantity}</p>
-                      <button
-                        disabled={singleproduct.quantity <= 1 ? true : false}
-                        style={{background:"transparent" , border:'none'}}
-                      >
-                        <i
-                          className="fas fa-chevron-down "
-                          onClick={singleproduct.quantity>1?() =>
-                            decreaseProductCount(singleproduct._id):("")
-                          }
-                        ></i>
-                      </button>
+              allproducts.map((item) => (
+                <div className="cartContainer" key={item._id}>
+                  <div className="CartItemCard">
+                    <img src={item.mobileImg1Link} alt="ssa" />
+                    <div className="detailcart_product">
+                      <Link to={`/productdetail/:${item._id}`}>
+                        <div className="detailcart_product_name">
+                          {item.mobileName}
+                        </div>
+                      </Link>
+                      {/* <span>{`Price: ₹${item.mobilePrice1}`}</span> */}
+                      <p onClick={() => removeItem(item._id)} className="detailcart_remove">Remove</p>
                     </div>
                   </div>
-                );
-              })}
-          </div>
-          <div className="cart-footer">
-            <CurrencyFormat
-              renderText={(value) => (
-                <>
-                  <p>
-                    Subtotal ({allproducts.length} items):{" "}
-                    <strong>{value}</strong>
-                  </p>
-                </>
-              )}
-              decimalScale={2}
-              value={getTotal(allproducts)}
-              displayType={"text"}
-              thousandSeparator={true}
-              prefix={"$"}
-            />
+                  <div className="cart_side">
+                    <div className="cartInput">
+                      <button
+                        onClick={
+                          item.quantity > 1
+                            ? () => decreaseProductCount(item._id)
+                            : () => removeItem(item._id)
+                        }
+                      >
+                        -
+                      </button>
+                      <input type="number" value={item.quantity} readOnly />
+                      <button onClick={() => increaseProductCount(item._id)}>
+                        +
+                      </button>
+                    </div>
+                    <p className="cartSubtotal">{`₹${
+                      item.mobilePrice1 * item.quantity
+                    }`}</p>
+                  </div>
+                </div>
+              ))}
 
-            <button
-              className="clear-cart banner-btn"
-              onClick={() => clearCart()}
-            >
-              clear cart
-            </button>
-            <NavLink to={"/checkout"}>
-              <button className="clear-cart banner-btn">CheckOut</button>
-            </NavLink>
+            <div className="cartGrossProfit">
+              <div></div>
+              <div className="cartGrossProfitBox">
+                <p>Gross Total</p>
+                <p>{`₹${allproducts.reduce(
+                  (acc, item) => acc + item.quantity * item.mobilePrice1,
+                  0
+                )}`}</p>
+              </div>
+              <div></div>
+              <div className="checkOutBtn">
+                <button onClick={checkoutHandler}>Check Out</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </>
+        </Fragment>
+      )}
+    </div>
   );
-}
+};
 
 export default Cart;

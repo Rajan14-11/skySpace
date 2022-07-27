@@ -10,7 +10,7 @@ import ScrollToTop from "react-scroll-to-top";
 import Header from "../../Shared/Header/Header";
 import "./Home.css";
 import UseAuth from "../../Hooks/useAuth";
-import NewHeader from "../../Shared/Header/NewHeader";
+
 
 const Home = () => {
   const { admin } = UseAuth();
@@ -19,8 +19,7 @@ const Home = () => {
       <ScrollToTop smooth color="#6f00ff" />
 
       <div className="headerde">
-        {/* <MainHeader /> */}
-        {/* <NewHeader/> */}
+        
       </div>
       <div className="header2f"></div>
       <Header />

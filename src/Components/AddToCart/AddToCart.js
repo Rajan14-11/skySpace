@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import Header from '../../Shared/Header/Header'
-import NewHeader from '../../Shared/Header/NewHeader';
 // import './AddToCart.css'
 import AlsoLike from './AlsoLike/AlsoLike';
 import LeftSection from './LeftSection/LeftSection';
@@ -46,7 +44,7 @@ function AddToCart() {
 
   return (
     <>
-      {/* <NewHeader /> */}
+      
       <div className="container">
         <div className="home-line">
           <a className="heading" href="/">

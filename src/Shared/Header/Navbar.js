@@ -1,42 +1,35 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
-import "./Header.css";
-import Rotate from "react-reveal/Rotate";
-import Fade from "react-reveal/Fade";
-import Pulse from "react-reveal/Pulse";
-import { faAddressBook, faAddressCard, faBell, faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
+import { auth } from "../../Firebase/FirebaseInitialize";
+import "./Navbar.css";
+import "./NewHeader.css"
+import {
+  faAddressBook,
+  faAddressCard,
+  faBell,
+  faMoon,
+  faSun,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowRightFromBracket,
   faCartPlus,
   faHouseChimney,
   faMagnifyingGlass,
-
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import "./NewHeader.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, NavLink } from "react-router-dom";
-import { signOut } from 'firebase/auth';
-import { auth } from '../../Firebase/FirebaseInitialize';
 
-const Header = (props) => {
-  // const { logOut, user } = UseAuth();
-  const [BurgerStatus, setBurgerStatus] = useState(true);
-    const[mode,setMode] = useState("light")
+function Navbar(props) {
+const [BurgerStatus, setBurgerStatus] = useState(true);
+const [mode, setMode] = useState("light");
 const [showcart, setShowCart] = useState("true");
 
 const logOut = () => {
   signOut(auth);
 };
 
-
   return (
     <>
-      {/* <div className='d-flex justify-content-end'>
-<button onClick={logOut}>LogOut</button>
-<Link to="/login"><h2>Login</h2></Link>
-<Link to="/signup"><h2>Reg</h2></Link>
-   <h2>{user.email}</h2>
-  </div>  */}
-
       <div className="burgerMenu" show={BurgerStatus}>
         <nav className={`sidebar ${BurgerStatus ? "close" : ""}`}>
           <div className="menu-bar">
@@ -114,7 +107,10 @@ const logOut = () => {
                           <div className="card-body">
                             <div className="accordion" id="mySubAccordion">
                               <div className="accordion-item">
-                                <h2 className="accordion-header" id="subheadingOne">
+                                <h2
+                                  className="accordion-header"
+                                  id="subheadingOne"
+                                >
                                   <button
                                     type="button"
                                     className="accordion-button collapsed"
@@ -142,7 +138,10 @@ const logOut = () => {
                               </div>
 
                               <div className="accordion-item">
-                                <h2 className="accordion-header" id="subheadingTwo">
+                                <h2
+                                  className="accordion-header"
+                                  id="subheadingTwo"
+                                >
                                   <button
                                     type="button"
                                     className="accordion-button"
@@ -218,7 +217,10 @@ const logOut = () => {
                           <div className="card-body">
                             <div className="accordion" id="mySub2Accordion">
                               <div className="accordion-item">
-                                <h2 className="accordion-header" id="sub2headingOne">
+                                <h2
+                                  className="accordion-header"
+                                  id="sub2headingOne"
+                                >
                                   <button
                                     type="button"
                                     className="accordion-button collapsed"
@@ -244,7 +246,10 @@ const logOut = () => {
                               </div>
 
                               <div className="accordion-item">
-                                <h2 className="accordion-header" id="sub2headingTwo">
+                                <h2
+                                  className="accordion-header"
+                                  id="sub2headingTwo"
+                                >
                                   <button
                                     type="button"
                                     className="accordion-button"
@@ -345,36 +350,33 @@ const logOut = () => {
                 </li>
 
                 <NavLink to={"/cart"}>
-                <div
-                  className="offcanvas offcanvas-end"
-                  tabindex="-1"
-                  id="offcanvasRight"
-                  aria-labelledby="offcanvasRightLabel"
-                >
-
-                </div>
-                <li
-                  className="nav-link car"
-                  type="button"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasRight"
-                  aria-controls="offcanvasRight"
+                  <div
+                    className="offcanvas offcanvas-end"
+                    tabindex="-1"
+                    id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel"
+                  ></div>
+                  <li
+                    className="nav-link car"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
                   >
-                  <a href="#">
-                    <FontAwesomeIcon
-                      className="icon"
-                      icon={faCartPlus}
-                      onClick={() => {
-                        setShowCart(!showcart);
-                      }}
-                    />
+                    <a href="#">
+                      <FontAwesomeIcon
+                        className="icon"
+                        icon={faCartPlus}
+                        onClick={() => {
+                          setShowCart(!showcart);
+                        }}
+                      />
 
-                    <div className="cart-items">{props.quantity}</div>
-                    <span className="text nav-text">Cart</span>
-                  </a>
-                </li>
-
-                 </NavLink>
+                      <div className="cart-items">{props.quantity}</div>
+                      <span className="text nav-text">Cart</span>
+                    </a>
+                  </li>
+                </NavLink>
 
                 <li className="nav-link">
                   <a href="#">
@@ -426,119 +428,107 @@ const logOut = () => {
         </nav>
       </div>
 
-      <div className="sticky-top ">
-        <nav className="navbar navbar-expand-lg ">
-          <div className="container-fluid d-flex justify-content-space-between align-items-center">
-            <a className="navbar-brand fs-4 fw-bold text-light" href="/">
-              {" "}
-              <Fade right>SkyAural</Fade>
-            </a>
-            <button
-              className="navbar-toggler burger_menu"
+      <header id="header">
+        <div className="main_top">
+          <div className="main_container">
+            <div
+              className="hamburger_menu_bars"
               onClick={() => setBurgerStatus(false)}
             >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav text-center m-auto mb-2 mb-lg-0">
-                <Rotate top left>
-                  <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="/">
-                      Home
-                    </a>
-                  </li>
-                </Rotate>
-                <Rotate top left>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/">
-                      About
-                    </a>
-                  </li>
-                </Rotate>
-                <Rotate top left>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/">
-                      Services
-                    </a>
-                  </li>
-                </Rotate>
-                <Rotate top left>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/">
-                      Products
-                    </a>
-                  </li>
-                </Rotate>
-                <Rotate top left>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/">
-                      Contact Us
-                    </a>
-                  </li>
-                </Rotate>
-              </ul>
-              <form role="search">
-                <div className="d-flex justify-content-center headerSearchDiv">
-                  <div className="d-flex ">
-                    <input
-                      autoComplete="none"
-                      className=" form-control me-2"
-                      type="search"
-                      placeholder="Search"
-                      aria-label="Search"
-                    />
-                    <Pulse>
-                      <i
-                        className="fs-2 pe d-flex align-items-center fa-solid fa-heart"
-                        id="likeBtn"
-                      ></i>
-                    </Pulse>
+              <span className="hamburger_menu_bar"></span>
+              <span className="hamburger_menu_bar"></span>
+              <span className="hamburger_menu_bar"></span>
+            </div>
+            <div className="navbar_main_logo">
+              <Link to={"/"}>
+                <img src="/imgs/skyspacelogo.jpeg" />
+              </Link>
+            </div>
+            <div className="navbar_main_search">
+              <input
+                type="text"
+                name="search"
+                placeholder="search"
+                autocomplete="off"
+              />
+              <button className="navbar_search_icon">
+                <i class=" fa fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+            <div className="navbar_right_menu">
+              <Link to={"/login"}>
+                <div className="navbar_user">
+                  <i class="fa navbar_icon fa-light fa-user"></i>
+                  <div className="user_login">
+                    <span>Account</span>
+                    <span>Login or Register</span>
                   </div>
                 </div>
-              </form>
-              <div className="right_menu d-flex">
-                <div className="image-text d-flex flex-column">
-                  <span className="sidebar_image">
-                    <img src="/imgs/bg.jpg" alt="" />
-                  </span>
-
-                  <div className="text logo-text">
-                    {/* <span className="name">The Sky Aural</span> */}
-                    <span className="profession">User Name</span>
-                  </div>
+              </Link>
+              <Link to={"/cart"}>
+                <div className="navbar_cart">
+                  <i class="fa fa-solid fa-cart-arrow-down navbar_icon"></i>
+                  <span>Cart</span>
                 </div>
-                <NavLink to={"/cart"}>
-                  <li className="nav-link car">
-                    <a href="#">
-                      <FontAwesomeIcon
-                        className="icon"
-                        icon={faCartPlus}
-                        onClick={() => {
-                          setShowCart(!showcart);
-                        }}
-                      />
-
-                      <div className="cart-items">{props.quantity}</div>
-                      <span className="text nav-text">Cart</span>
-                    </a>
-                  </li>
-                </NavLink>
-              </div>
+              </Link>
+              <Link to={"/wishlist"}>
+                <div className="navbar_wishlist">
+                  <i class="fa navbar_icon fa-light fa-heart"></i>
+                  <span>Wishlist</span>
+                </div>
+              </Link>
             </div>
           </div>
+        </div>
+
+        <nav className="main_navbar">
+          <div className="main_navbar_conatiner">
+            <nav>
+              <ul className="main_navbar_menu">
+                <li>
+                  ONE-PLUS
+                  <ul class="sub-nav">
+                    <li>One Plus Nord 2T 5G</li>
+                    <li>One Plus 10R 5G</li>
+                    <li>One Plus 9RT 5G</li>
+                    <li>One Plus 9 5G</li>
+                  </ul>
+                </li>
+                <li>
+                  APPLE
+                  <ul class="sub-nav">
+                    <li>I-Phone 11</li>
+                    <li>I-phone 12</li>
+                    <li>I-phone 13</li>
+                    <li>I-Phone X</li>
+                  </ul>
+                </li>
+                <li>
+                  Samsung
+                  <ul class="sub-nav">
+                    <li>Galaxy F13 5G</li>
+                    <li>Galaxy A52s</li>
+                    <li>Galaxy A03 Core</li>
+                    <li>Galaxy S22 Ultra</li>
+                  </ul>
+                </li>
+                <li>
+                  EarPods
+                  <ul class="sub-nav">
+                    <li>Airdopes 141</li>
+                    <li>Airpods Pro</li>
+                    <li>Airpods 3</li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+
+            {/* </div> */}
+          </div>
         </nav>
-      </div>
+      </header>
     </>
   );
-};
+}
 
-export default Header;
-
-
-
-
-
+export default Navbar;

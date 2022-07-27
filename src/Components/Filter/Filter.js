@@ -5,7 +5,8 @@ import Slider from "@mui/material/Slider";
 import { Checkbox } from "@mui/material";
 
 function Filter() {
-  const [value, setValue] = useState([1000, 10000]);
+  const [value, setValue] = useState([10000, 1000000]);
+  const [close, setClose] = useState(false);
 
   const rangeSelector = (event, newValue) => {
     setValue(newValue);
@@ -13,14 +14,15 @@ function Filter() {
 
   return (
     <>
-      <div className="filter_conatiner">
+      <button onClick={() => setClose(false)}>show</button>
+      <div className={`filter_conatiner ${close ? "" : "show"} `}>
         <div className="inner_content">
           <div className="filter_heading">
             <h2>Filters</h2>
             <i
-                className="fas fa-window-close close-button"
-
-              ></i>
+              className="fas fa-window-close close-button"
+              onClick={() => setClose(true)}
+            ></i>
           </div>
 
           <div className="hr">
@@ -43,22 +45,28 @@ function Filter() {
 
           <div className="price">
             <div className="slider">
-              <Typography id="range-slider" className="heading" gutterBottom>
+              <Typography
+                id="range-slider"
+                className="filter_heading_title"
+                gutterBottom
+              >
                 Select Price Range:
               </Typography>
               <Slider
                 value={value}
-                min={0}
-                max={10000}
+                min={10000}
+                max={100000}
                 onChange={rangeSelector}
                 valueLabelDisplay="auto"
               />
+
+
 
               <div className="price_range">
                 <span>{value[0]}</span>
 
                 <span>to</span>
-               <span>{value[1]}</span>
+                <span>{value[1]}</span>
               </div>
             </div>
           </div>
@@ -72,19 +80,21 @@ function Filter() {
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingOne">
                   <button
-                    className="accordion-button"
+                    className="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    <h4 className="heading">Brands</h4>
+                    <div className="accordion_heading">
+                      <h4 className="filter_heading_title">Brands</h4>
+                    </div>
                   </button>
                 </h2>
                 <div
                   id="collapseOne"
-                  className="accordion-collapse collapse show"
+                  className="accordion-collapse collapse"
                   aria-labelledby="headingOne"
                   data-bs-parent="#accordionExample"
                 >
@@ -111,27 +121,29 @@ function Filter() {
             </div>
           </div>
 
-          <div className="hr">
+          {/* <div className="hr">
             <hr />
-          </div>
+          </div> */}
           <div className="customer_ratings">
             <div className="accordion" id="accordionExample1">
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingTwo">
                   <button
-                    className="accordion-button"
+                    className="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseTwo"
                     aria-expanded="true"
                     aria-controls="collapseTwo"
                   >
-                    <h3 className="heading">Customer Ratings</h3>
+                    <div className="accordion_heading">
+                      <h4 className="filter_heading_title">Customer Ratings</h4>
+                    </div>
                   </button>
                 </h2>
                 <div
                   id="collapseTwo"
-                  className="accordion-collapse collapse show"
+                  className="accordion-collapse collapse"
                   aria-labelledby="headingTwo"
                   data-bs-parent="#accordionExample1"
                 >
@@ -158,28 +170,30 @@ function Filter() {
             </div>
           </div>
 
-          <div className="hr">
+          {/* <div className="hr">
             <hr />
-          </div>
+          </div> */}
 
           <div className="ram">
             <div className="accordion" id="accordionExample2">
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingThree">
                   <button
-                    className="accordion-button"
+                    className="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseThree"
                     aria-expanded="true"
                     aria-controls="collapseThree"
                   >
-                    <h3 className="heading">RAM</h3>
+                    <div className="accordion_heading">
+                      <h4 className="filter_heading_title">Ram</h4>
+                    </div>
                   </button>
                 </h2>
                 <div
                   id="collapseThree"
-                  className="accordion-collapse collapse show"
+                  className="accordion-collapse collapse"
                   aria-labelledby="headingThree"
                   data-bs-parent="#accordionExample2"
                 >

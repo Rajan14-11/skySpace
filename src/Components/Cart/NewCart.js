@@ -3,8 +3,7 @@ import { Offcanvas ,Stack} from 'react-bootstrap'
 import CurrencyFormat from 'react-currency-format';
 import { Link, NavLink } from 'react-router-dom';
 import Header from '../../Shared/Header/Header';
-import NewHeader from '../../Shared/Header/NewHeader';
-
+import "./NewCart.css"
 
 function NewCart() {
 
