@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../../Firebase/FirebaseInitialize";
 import "./Navbar.css";
 import "./NewHeader.css"
@@ -27,6 +27,34 @@ const [showcart, setShowCart] = useState("true");
 const logOut = () => {
   signOut(auth);
 };
+
+ const [allproducts, setAllproducts] = useState([]);
+
+ let quantity = 0;
+
+ {
+   allproducts &&
+     allproducts.map((item) => {
+       return (quantity += parseInt(item.quantity));
+     });
+ }
+
+ useEffect(() => {
+   const getproducts = async () => {
+     try {
+       let result = await fetch(
+         "https://theskyaural.herokuapp.com/mobileDetailsPost"
+       );
+       let data = await result.json();
+       setAllproducts(data);
+     } catch (error) {
+       console.log(error);
+     }
+   };
+   return () => {
+     getproducts();
+   };
+ }, []);
 
   return (
     <>
@@ -349,35 +377,6 @@ const logOut = () => {
                   </a>
                 </li>
 
-                <NavLink to={"/cart"}>
-                  <div
-                    className="offcanvas offcanvas-end"
-                    tabindex="-1"
-                    id="offcanvasRight"
-                    aria-labelledby="offcanvasRightLabel"
-                  ></div>
-                  <li
-                    className="nav-link car"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"
-                  >
-                    <a href="#">
-                      <FontAwesomeIcon
-                        className="icon"
-                        icon={faCartPlus}
-                        onClick={() => {
-                          setShowCart(!showcart);
-                        }}
-                      />
-
-                      <div className="cart-items">{props.quantity}</div>
-                      <span className="text nav-text">Cart</span>
-                    </a>
-                  </li>
-                </NavLink>
-
                 <li className="nav-link">
                   <a href="#">
                     <FontAwesomeIcon className="icon" icon={faAddressBook} />
@@ -431,14 +430,6 @@ const logOut = () => {
       <header id="header">
         <div className="main_top">
           <div className="main_container">
-            <div
-              className="hamburger_menu_bars"
-              onClick={() => setBurgerStatus(false)}
-            >
-              <span className="hamburger_menu_bar"></span>
-              <span className="hamburger_menu_bar"></span>
-              <span className="hamburger_menu_bar"></span>
-            </div>
             <div className="navbar_main_logo">
               <Link to={"/"}>
                 <img src="/imgs/skyspacelogo.jpeg" />
@@ -456,6 +447,32 @@ const logOut = () => {
               </button>
             </div>
             <div className="navbar_right_menu">
+              <Link to={"/cart"}>
+                <div className="navbar_cart">
+                  <div className="navbar_cart-items">{quantity}</div>
+                  <i
+                    class="fa fa-solid fa-cart-arrow-down navbar_icon"
+                    onClick={() => {
+                      setShowCart(!showcart);
+                    }}
+                  ></i>
+                  <span>Cart</span>
+                </div>
+              </Link>
+              <div
+                className="hamburger_menu_bars"
+                onClick={() => setBurgerStatus(false)}
+              >
+                <span className="hamburger_menu_bar"></span>
+                <span className="hamburger_menu_bar"></span>
+                <span className="hamburger_menu_bar"></span>
+              </div>
+              <Link to={"/wishlist"}>
+                <div className="navbar_wishlist">
+                  <i class="fa navbar_icon fa-light fa-heart"></i>
+                  <span>Wishlist</span>
+                </div>
+              </Link>
               <Link to={"/login"}>
                 <div className="navbar_user">
                   <i class="fa navbar_icon fa-light fa-user"></i>
@@ -463,18 +480,6 @@ const logOut = () => {
                     <span>Account</span>
                     <span>Login or Register</span>
                   </div>
-                </div>
-              </Link>
-              <Link to={"/cart"}>
-                <div className="navbar_cart">
-                  <i class="fa fa-solid fa-cart-arrow-down navbar_icon"></i>
-                  <span>Cart</span>
-                </div>
-              </Link>
-              <Link to={"/wishlist"}>
-                <div className="navbar_wishlist">
-                  <i class="fa navbar_icon fa-light fa-heart"></i>
-                  <span>Wishlist</span>
                 </div>
               </Link>
             </div>

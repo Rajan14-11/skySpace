@@ -95,7 +95,7 @@ export default class OurServices extends React.Component {
           <Slider ref={(c) => (this.slider = c)} {...settings}>
             {this.state.posts.map((post) => (
               <div key={post._id}>
-                <Link to={`/addtocart/${post._id}`}>
+                <Link to={`/productdetail/${post._id}`}>
                   <img
                     className=" m-1 img-fluid"
                     src={post.mobileImg1Link}

@@ -9,7 +9,6 @@ import AuthProvider from "./context/AuthProvider/AuthProvider";
 import MobilePost from "./Components/AdminRoute/MobilePost/MobilePost";
 import Mobile from "./Components/Products/Mobile/Mobile";
 import MobileDetails from "./Components/MobileDetails/MobileDetails";
-import AddToCart from "./Components/AddToCart/AddToCart";
 import Cart from "./Components/Cart/Cart";
 import Checkout from "./Components/Checkout/Checkout";
 import NewCart from "./Components/Cart/NewCart";
@@ -23,6 +22,7 @@ function App() {
     <>
     <AuthProvider>
           <ScrollToTop smooth color="#6f00ff" />
+          <Navbar/>
 
       <Routes>
 
@@ -36,16 +36,13 @@ function App() {
       {/* admin route */}
       <Route path='mobilePost' element={<MobilePost/>}/>
 
-
-      <Route path="addtocart/:id" element={<AddToCart/>}/>
-
       <Route path="cart" element={<NewCart/>}/>
       <Route path="checkout" element={<Checkout/>}/>
       <Route path="filter" element={<Filter/>}/>
       <Route path="ordercomplete" element={<OrderComplete/>}/>
       <Route path="productdetail/:id" element={<ProductDetails/>}/>
       <Route path="detailcart" element={<Cart/>}/>
-      <Route path="navbar" element={<Navbar/>}/>
+      {/* <Route path="navbar" element={<Navbar/>}/> */}
       </Routes>
 
       </AuthProvider>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
+import Navbar from "../../Shared/Header/Navbar";
 import "./AddToCart.css";
 // import AlsoLike from "./AlsoLike/AlsoLike";
 import LeftSection from "./LeftSection/LeftSection";
@@ -43,7 +44,6 @@ function ProductDetails() {
 
   return (
     <>
-    <Header/>
       <div className="product_container">
         <div className="product_content">
           <div className="home-line">

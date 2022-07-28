@@ -87,7 +87,6 @@ navigate('/checkout')
 
   return (
     <div className="detailcart_body">
-      <Header />
       <div className="detailcart_stepper">
         <CheckoutSteps activeStep={0} />
       </div>

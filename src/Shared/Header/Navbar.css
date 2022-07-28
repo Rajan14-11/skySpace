@@ -3,7 +3,7 @@
 #header{
     background: #081621;
     box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     position: relative;
     z-index: 100;}
 
@@ -27,7 +27,6 @@
 
     .navbar_main_logo{
         width: 15%;
-        flex: 0 0 160px;
         display: flex;
         justify-content: center;
     }
@@ -104,6 +103,10 @@
 
 .navbar_cart,.navbar_wishlist{
     color: white;
+}
+
+.navbar_cart{
+    position: relative;
 }
 
 
@@ -202,6 +205,19 @@
     background-color: white;
 }
 
+.navbar_cart-items{
+    background-color: blueviolet;
+    width: 25px;
+    font-size: 12px;
+    position:absolute;
+    top: -19px;
+    right: 30px;
+    height: 25x;
+    border-radius: 50%;
+   padding:3px;
+   text-align: center;
+
+}
 
 @media (max-width:1040px) {
     .main_navbar_conatiner{
@@ -227,37 +243,53 @@
     .user_login :last-child{
         display: none;
     }
+    .navbar_right_menu span{
+        font-size: 14px;
+    }
+
+    .navbar_cart-items{
+        right:-7px;
+    }
 }
 
 @media (max-width:660px) {
     .main_navbar_conatiner{
         display: none;
     }
-    .navbar_cart , .navbar_user , .navbar_wishlist{
+     .navbar_user , .navbar_wishlist{
         display: none;
     }
     .hamburger_menu_bars{
         display: flex;
         flex-direction: column;
-
     }
-
+    .hamburger_menu_bar{
+        width:35px;
+        margin: 4px;
+    }
     .main_top{
         justify-content: space-between;
     }
 
     .navbar_main_logo{
-        width: 30%;
+        width: 20%;
     }
-    /* .navbar_main_search{
-        width: 100%;
-    } */
+    .navbar_main_search{
+       display: none;
+    }
 
     .main_container{
         justify-content: space-between;
     }
     .navbar_right_menu{
-        display: none;
+        display: flex;
+        align-items: center;
+        width:auto;
+    }
+
+    .navbar_cart{
+        margin-top: 14px;
+        margin-right: 10px;
     }
 
 }
