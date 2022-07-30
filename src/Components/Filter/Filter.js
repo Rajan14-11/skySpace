@@ -15,7 +15,7 @@ function Filter() {
   return (
     <>
       <button onClick={() => setClose(false)}>show</button>
-      <div className={`filter_conatiner ${close ? "" : "show"} `}>
+      <div className={`filter_conatiner ${close ? "" : "filter_show"} `}>
         <div className="inner_content">
           <div className="filter_heading">
             <h2>Filters</h2>

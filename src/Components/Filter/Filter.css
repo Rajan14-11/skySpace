@@ -112,8 +112,9 @@
     display: block;
   }
 
-  .show{
+  .filter_show{
     display: block;
+    overflow-y: scroll;
   }
 }
 
@@ -122,8 +123,9 @@
         width: 100%;
         display: none;
     }
-    .show{
+    .filter_show{
       display: block;
+      overflow-y: scroll;
     }
 }
 

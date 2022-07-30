@@ -116,7 +116,7 @@ function NewCart() {
                 return (
                   <div className="cart-item" key={singleproduct._id}>
                     <div className="product-details">
-                      <Link to={`/addtocart/:${singleproduct._id}`}>
+                      <Link to={`/productdetail/${singleproduct._id}`}>
                         <img src={singleproduct.mobileImg1Link} alt="" />
                       </Link>
                       <div className="product-detail">
