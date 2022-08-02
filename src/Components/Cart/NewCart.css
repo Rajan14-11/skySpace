@@ -192,3 +192,7 @@ margin-bottom: 10px;
   align-items: center;
   justify-content: center;
 }
+
+.offcanvas-body{
+  overflow-x: hidden;
+}

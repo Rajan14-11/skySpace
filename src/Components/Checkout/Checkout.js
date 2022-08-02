@@ -66,7 +66,7 @@ const[zipcode,setZipCode] = useState("")
  }
 
   return (
-    <>
+    <div style={{backgroundColor:'white',padding:'20px 0'}}>
       <CheckoutSteps activeStep={1} />
       <div className="checkout_container">
         <div className="checkout_shipping_details">
@@ -330,7 +330,7 @@ const[zipcode,setZipCode] = useState("")
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -29,7 +29,7 @@ function Login() {
    onAuthStateChanged(auth,(authUser)=>{
       if(authUser){
         dispatch(login({
-          // id:authUser.uid,
+          
           email:authUser.email
         }))
       }

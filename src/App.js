@@ -9,7 +9,7 @@ import AuthProvider from "./context/AuthProvider/AuthProvider";
 import MobilePost from "./Components/AdminRoute/MobilePost/MobilePost";
 import Mobile from "./Components/Products/Mobile/Mobile";
 import MobileDetails from "./Components/MobileDetails/MobileDetails";
-import Cart from "./Components/Cart/Cart";
+import DetailCart from "./Components/Cart/DetailCart";
 import Checkout from "./Components/Checkout/Checkout";
 import NewCart from "./Components/Cart/NewCart";
 import Filter from "./Components/Filter/Filter";
@@ -41,7 +41,7 @@ function App() {
       <Route path="filter" element={<Filter/>}/>
       <Route path="ordercomplete" element={<OrderComplete/>}/>
       <Route path="productdetail/:id" element={<ProductDetails/>}/>
-      <Route path="detailcart" element={<Cart/>}/>
+      <Route path="detailcart" element={<DetailCart/>}/>
       {/* <Route path="navbar" element={<Navbar/>}/> */}
       </Routes>
 

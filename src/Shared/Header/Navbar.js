@@ -12,17 +12,20 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowRightFromBracket,
-  faCartPlus,
   faHouseChimney,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/userSlice";
 
 function Navbar(props) {
 const [BurgerStatus, setBurgerStatus] = useState(true);
 const [mode, setMode] = useState("light");
 const [showcart, setShowCart] = useState("true");
+
+const user = useSelector(selectUser);
 
 const logOut = () => {
   signOut(auth);
@@ -59,7 +62,11 @@ const logOut = () => {
   return (
     <>
       <div className="burgerMenu" show={BurgerStatus}>
-        <nav className={`sidebar ${BurgerStatus ? "close" : ""}`}>
+        <nav
+          className={`sidebar ${
+            BurgerStatus || window.innerWidth > 660 ? "close" : ""
+          }`}
+        >
           <div className="menu-bar">
             <div
               className="image-text"
@@ -76,7 +83,9 @@ const logOut = () => {
 
               <div className="text logo-text">
                 {/* <span className="name">The Sky Aural</span> */}
-                <span className="profession">User Name</span>
+                <span className="profession">
+                  {user ? user.email.slice(0, 10) : "User Name"}
+                </span>
               </div>
 
               <button
@@ -388,13 +397,23 @@ const logOut = () => {
 
             <div className="bottom-content">
               <li className="" onClick={logOut}>
-                <a href="#">
-                  <FontAwesomeIcon
-                    className="icon"
-                    icon={faArrowRightFromBracket}
-                  />
-                  <span className="text nav-text">Logout</span>
-                </a>
+                {user ? (
+                  <a href="#">
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faArrowRightFromBracket}
+                    />
+                    <span className="text nav-text">Logout</span>
+                  </a>
+                ) : (
+                  <Link to="/login" onClick={()=>setBurgerStatus(true)}>
+                    <FontAwesomeIcon
+                      className="icon"
+                      icon={faArrowRightFromBracket}
+                    />
+                    <span className="text nav-text">Login</span>
+                  </Link>
+                )}
               </li>
 
               <li className="mode">
@@ -427,8 +446,8 @@ const logOut = () => {
         </nav>
       </div>
 
-      <header id="header">
-        <div className="main_top">
+      <header id="header" className="sticky-top">
+        <div className="main_top sticky-top">
           <div className="main_container">
             <div className="navbar_main_logo">
               <Link to={"/"}>
@@ -440,10 +459,10 @@ const logOut = () => {
                 type="text"
                 name="search"
                 placeholder="search"
-                autocomplete="off"
+                autoComplete="off"
               />
               <button className="navbar_search_icon">
-                <i class=" fa fa-solid fa-magnifying-glass"></i>
+                <i className=" fa fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
             <div className="navbar_right_menu">
@@ -451,7 +470,7 @@ const logOut = () => {
                 <div className="navbar_cart">
                   <div className="navbar_cart-items">{quantity}</div>
                   <i
-                    class="fa fa-solid fa-cart-arrow-down navbar_icon"
+                    className="fa fa-solid fa-cart-arrow-down navbar_icon"
                     onClick={() => {
                       setShowCart(!showcart);
                     }}
@@ -469,16 +488,30 @@ const logOut = () => {
               </div>
               <Link to={"/wishlist"}>
                 <div className="navbar_wishlist">
-                  <i class="fa navbar_icon fa-light fa-heart"></i>
+                  <i className="fa navbar_icon fa-light fa-heart"></i>
                   <span>Wishlist</span>
                 </div>
               </Link>
               <Link to={"/login"}>
                 <div className="navbar_user">
-                  <i class="fa navbar_icon fa-light fa-user"></i>
+                  <i className="fa navbar_icon fa-light fa-user"></i>
                   <div className="user_login">
-                    <span>Account</span>
-                    <span>Login or Register</span>
+                    {user ? (
+                      <>
+                        <span>{user.email && user.email.slice(0, 10)}</span>
+                        <button
+                          className="navbar_logout_btn"
+                          onClick={() => logOut()}
+                        >
+                          Logout
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <span>Account</span>
+                        <span>Login or Register</span>
+                      </>
+                    )}
                   </div>
                 </div>
               </Link>
@@ -492,7 +525,7 @@ const logOut = () => {
               <ul className="main_navbar_menu">
                 <li>
                   ONE-PLUS
-                  <ul class="sub-nav">
+                  <ul className="sub-nav">
                     <li>One Plus Nord 2T 5G</li>
                     <li>One Plus 10R 5G</li>
                     <li>One Plus 9RT 5G</li>
@@ -501,7 +534,7 @@ const logOut = () => {
                 </li>
                 <li>
                   APPLE
-                  <ul class="sub-nav">
+                  <ul className="sub-nav">
                     <li>I-Phone 11</li>
                     <li>I-phone 12</li>
                     <li>I-phone 13</li>
@@ -510,7 +543,7 @@ const logOut = () => {
                 </li>
                 <li>
                   Samsung
-                  <ul class="sub-nav">
+                  <ul className="sub-nav">
                     <li>Galaxy F13 5G</li>
                     <li>Galaxy A52s</li>
                     <li>Galaxy A03 Core</li>
@@ -519,7 +552,7 @@ const logOut = () => {
                 </li>
                 <li>
                   EarPods
-                  <ul class="sub-nav">
+                  <ul className="sub-nav">
                     <li>Airdopes 141</li>
                     <li>Airpods Pro</li>
                     <li>Airpods 3</li>

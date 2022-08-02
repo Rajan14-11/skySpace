@@ -7,7 +7,6 @@ import Footer from "../../Shared/Footer/Footer";
 import OurServices from "../OurServices/OurServices";
 import ScrollToTop from "react-scroll-to-top";
 // import MainHeader from "../MainHeader/MainHeader";
-import Header from "../../Shared/Header/Header";
 import "./Home.css";
 import UseAuth from "../../Hooks/useAuth";
 import Navbar from "../../Shared/Header/Navbar";

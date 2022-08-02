@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Offcanvas ,Stack} from 'react-bootstrap'
 import CurrencyFormat from 'react-currency-format';
 import { Link, NavLink } from 'react-router-dom';
-import Header from '../../Shared/Header/Header';
 import Navbar from '../../Shared/Header/Navbar';
 import "./NewCart.css"
 
@@ -29,17 +28,7 @@ function NewCart() {
            "https://theskyaural.herokuapp.com/mobileDetailsPost"
          );
          let data = await result.json();
-      //    let localdata = [{
-      //     //  mobileTitle:localStorage.getItem('Title').toString(),
-      //     //  mobilePrice1:localStorage.getItem('Price').toString(),
-      //     //  quantiy:localStorage.getItem('quantity').toString(),
-      //     productdetails:localStorage.getItem("ProductDetails")
-      //  }];
-
-      let localdata = [JSON.parse(localStorage.getItem("ProductDetails"))]
-         let completedata = [...data,...localdata]
-         console.log(completedata)
-         setAllproducts(completedata);
+         setAllproducts(data);
        } catch (error) {
          console.log(error);
        }
