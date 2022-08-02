@@ -117,7 +117,7 @@ function NewCart() {
                         {singleproduct.quantity > 0 ? (
                           <div className="quantity">
                             <i
-                              class="fa fa-light fa-circle-plus"
+                              className="fa fa-light fa-circle-plus"
                               onClick={() =>
                                 increaseProductCount(singleproduct._id)
                               }
@@ -132,7 +132,7 @@ function NewCart() {
                                 background: "transparent",
                                 border: "none",
                               }}
-                              class=" fa fa-light fa-circle-minus"
+                              className=" fa fa-light fa-circle-minus"
                               onClick={
                                 singleproduct.quantity > 1
                                   ? () =>
@@ -149,7 +149,7 @@ function NewCart() {
                       </div>
                       <div className="right-part-cart">
                         <i
-                          class="fa fa-light fa-xmark remove-item"
+                          className="fa fa-light fa-xmark remove-item"
                           onClick={() => removeItem(singleproduct._id)}
                         ></i>
 

@@ -72,11 +72,7 @@ function DetailCart() {
 
   return (
     <div
-      style={{
-        backgroundColor: "white",
-        padding: "20px 0",
-        height: "fit-content",
-      }}
+      className="main_detail_cart_container"
     >
       <CheckoutSteps activeStep={0} />
       <section className="d-flex mt-5">
