@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../Shared/Header/Navbar";
 import "./AddToCart.css";
+import BottomPart from "./BottomPart/BottomPart";
 // import AlsoLike from "./AlsoLike/AlsoLike";
 import LeftSection from "./LeftSection/LeftSection";
 import RightSection from "./RightSection/RightSection";
@@ -66,12 +67,13 @@ function ProductDetails() {
 
             <RightSection
               title={productDetails && productDetails.mobileName}
-              price={productDetails && productDetails.mobilePrice1}
+              price={productDetails && productDetails.mobilePrice2}
               productdetails={productDetails&&productDetails}
+              maxprice={productDetails&&productDetails.mobilePrice1}
             />
           </div>
 
-          {/* <AlsoLike mobDetails={alsoLike && alsoLike} /> */}
+          <BottomPart/>
         </div>
       </div>
     </>

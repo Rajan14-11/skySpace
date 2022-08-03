@@ -21,7 +21,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/userSlice";
 
 function Navbar(props) {
-const [BurgerStatus, setBurgerStatus] = useState(true);
+const [BurgerStatus, setBurgerStatus] = useState(false);
 const [mode, setMode] = useState("light");
 const [showcart, setShowCart] = useState("true");
 
@@ -62,9 +62,11 @@ const logOut = () => {
   return (
     <>
       <div className="burgerMenu" show={BurgerStatus}>
+
+        {BurgerStatus &&
         <nav
           className={`sidebar ${
-            BurgerStatus || window.innerWidth > 660 ? "close" : ""
+            BurgerStatus  ?"" : "close"
           }`}
         >
           <div className="menu-bar">
@@ -92,7 +94,7 @@ const logOut = () => {
                 type="button"
                 className="btn-close"
                 aria-label="Close"
-                onClick={() => setBurgerStatus(true)}
+                onClick={() => setBurgerStatus(false)}
               ></button>
             </div>
 
@@ -444,6 +446,7 @@ const logOut = () => {
             </div>
           </div>
         </nav>
+}
       </div>
 
       <header id="header" className="sticky-top">
@@ -480,7 +483,7 @@ const logOut = () => {
               </Link>
               <div
                 className="hamburger_menu_bars"
-                onClick={() => setBurgerStatus(false)}
+                onClick={() => setBurgerStatus(true)}
               >
                 <span className="hamburger_menu_bar"></span>
                 <span className="hamburger_menu_bar"></span>

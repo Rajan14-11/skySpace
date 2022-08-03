@@ -119,13 +119,14 @@ function DetailCart() {
                           >
                             <td style={{ width: "35%" }}>
                               <div className="main">
-                                <div className="d-flex align-items-center">
+                                <div className="d-flex align-items-center" style={{position:'relative'}}>
                                   <img
                                     src={product.mobileImg1Link}
                                     alt="Product-1"
                                     width="75"
                                     height="75"
                                   />
+                                  <i className="fa fa-solid fa-close close-icon" onClick={()=>removeItem(product._id)}></i>
                                   <div className="des">
                                     <p>{product.mobileName}</p>
                                   </div>

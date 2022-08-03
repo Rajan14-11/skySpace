@@ -186,7 +186,13 @@
 .main_detail_cart_container{
     background-color: white;
     padding: 20px 0;
-    height: 100vh;
+    height: 120vh;
+}
+
+.close-icon{
+    position: absolute;
+    top: 0;
+    right:-10px
 }
 @media (max-width:768px) {
 

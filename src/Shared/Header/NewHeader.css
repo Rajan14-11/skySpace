@@ -51,17 +51,14 @@ body.dark{
     left: -400px;
     height: 100%;
     width: 250px;
-    /* padding: 10px 14px; */
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 10000;
-    /* transform: translateX(0); */
     padding: 10px;
     transition: 0.5s;
 }
 .sidebar.close{
-    /* transform: translateX(100%); */
-
+    transition: 2s;
     width: 0;
     padding: 0;
 }
@@ -103,9 +100,7 @@ body.dark{
     white-space: nowrap;
     opacity: 1;
 }
-.sidebar.close .text{
-    /* opacity: 0; */
-}
+
 /* =========================== */
 
 .sidebar header{

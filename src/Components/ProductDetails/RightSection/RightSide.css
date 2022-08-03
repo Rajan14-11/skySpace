@@ -4,12 +4,28 @@
 
 .rightside_content{
   width: 60%;
-
 }
 
 .product__price {
   margin-top: 5px;
   font-size: 20px;
+
+}
+
+.product__max-price{
+  margin-top: 5px;
+  font-size: 18px;
+margin-left: 10px;
+color: grey;
+text-decoration:line-through;
+text-decoration-color: black;
+text-decoration-thickness: 2px;
+}
+
+.price_discount{
+  margin-left:5px;
+  font-size: 16px;
+  margin-top: 5px;
 
 }
 .product {
@@ -20,9 +36,10 @@
   margin: 10px;
   padding: 20px;
   width: 100%;
-  max-height: 400px;
+  /* max-height: 400px; */
   min-width: 100px;
   z-index: 1;
+  overflow: hidden;
 }
 
 .product-name{

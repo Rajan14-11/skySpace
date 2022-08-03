@@ -7,11 +7,8 @@ function RightSection(props) {
   const [totalPrice,setTotalPrice] = useState(props.price)
  let navigate = useNavigate()
  const Cart = ()=>{
-    //  localStorage.setItem("Title",props.title)
-    //  localStorage.setItem("Price",props.price)
-    //  localStorage.setItem("quantity",counterValue)
-    localStorage.setItem("ProductDetails",JSON.stringify(props.productdetails))
-    navigate("/cart",{replace:true})
+
+    navigate("/detailcart",{replace:true})
 
   }
 
@@ -35,10 +32,17 @@ function RightSection(props) {
             life.
           </p>
 
-          <p className="product__price">
-            <strong>$</strong>
-            <strong>{props.price}</strong>
-          </p>
+          <div className="d-flex justify-content-center align-items-center">
+            <p className="product__price">
+              <strong>$</strong>
+              <strong>{props.price}</strong>
+            </p>
+            <p className="product__max-price">
+              <strong>$</strong>
+              <strong>{props.maxprice}</strong>
+            </p>
+            <p className='price_discount'>({Math.ceil(((props.maxprice-props.price)/props.maxprice)*100)}%)</p>
+          </div>
 
           <div className="product__rating">
             {Array(5)
@@ -109,19 +113,18 @@ function RightSection(props) {
               Add To Cart
             </button>
           </div>
-        <div className="social-sharing">
-          <div className="facebook">
-            <img src="/imgs/facebooksvg.svg"></img>
-          </div>
-          <div className="facebook">
-            <img src="/imgs/twittersvg.svg"></img>
-          </div>
-          <div className="facebook">
-            <img src="/imgs/instagramsvg.svg"></img>
+          <div className="social-sharing">
+            <div className="facebook">
+              <img src="/imgs/facebooksvg.svg"></img>
+            </div>
+            <div className="facebook">
+              <img src="/imgs/twittersvg.svg"></img>
+            </div>
+            <div className="facebook">
+              <img src="/imgs/instagramsvg.svg"></img>
+            </div>
           </div>
         </div>
-        </div>
-
 
         {/* <div className="description">
           <div className="d-grid gap-2 ">
