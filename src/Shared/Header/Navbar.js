@@ -61,7 +61,7 @@ const logOut = () => {
 
   return (
     <>
-      <div className="burgerMenu" show={BurgerStatus}>
+      <div className="burgerMenu">
 
         {BurgerStatus &&
         <nav

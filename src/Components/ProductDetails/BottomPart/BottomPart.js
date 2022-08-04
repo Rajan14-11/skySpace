@@ -10,7 +10,7 @@ function BottomPart() {
       <div>
         <div className="bottom_main_container">
           <ul className="bottom_nav_links">
-            <li className="bottom_nav_link">
+            <li className="bottom_nav_link nav-active">
               <Link
                 activeClass="nav-active"
                 to="description"
@@ -170,7 +170,7 @@ function BottomPart() {
                         <div className="ratings">
                           <div
                             className="ratings-val"
-                            style={{ width: "60%;" }}
+                            style={{ width: "60%" }}
                           ></div>
                           <span className="tooltip-text">3.00</span>
                         </div>

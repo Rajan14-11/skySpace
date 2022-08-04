@@ -140,13 +140,13 @@
     margin-bottom: 0.9rem;
 }
 
-p {
+/* p {
     margin-bottom: 0;
     font-size: 1.4rem;
     font-weight: 300;
     letter-spacing: 0;
     color: #777;
-}
+} */
 
 .rating-form {
     display: flex;
@@ -224,9 +224,6 @@ p {
     padding: 20px;
     border-radius: 5px;
 }
-/* p{
-    font-size: 16px;
-} */
 
 .add_review_button{
     padding: 10px;
