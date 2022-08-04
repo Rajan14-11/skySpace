@@ -21,7 +21,7 @@
     "dotenv": "^16.0.1",
     "firebase": "^9.8.4",
     "jquery": "^3.6.0",
-    "react": "^18.2.0",
+    "react": "^16.2.0",
     "react-bootstrap": "^2.4.0",
     "react-currency-format": "^1.1.0",
     "react-dom": "^18.2.0",
@@ -40,6 +40,10 @@
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.4.19",
     "web-vitals": "^2.1.4"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.5.5"
   },
   "scripts": {
     "start": "react-scripts start",
